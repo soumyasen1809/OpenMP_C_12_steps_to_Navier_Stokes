@@ -5,7 +5,7 @@ int main(){
   // Define the domain
   double x_len = 2.0;    // Length of the domain
   int x_points = 101;    // Number of points to consider
-  double del_x = x_len/x_points;     // Length of an element
+  double del_x = x_len/(x_points-1);     // Length of an element
   double x[x_points];
 
   #pragma omp parallel for firstprivate(del_x)
