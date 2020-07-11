@@ -5,7 +5,7 @@ int main(){
   // Define the domain
   float x_len = 2.0;    // Length of the domain
   int x_points = 101;    // Number of points to consider
-  float del_x = x_len/x_points;     // Length of an element
+  float del_x = x_len/(x_points-1);     // Length of an element
   float x[x_points];
 
   #pragma omp parallel for
