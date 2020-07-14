@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1594724569 source:c:\users\soumy\downloads\dx-sera\c_openmp_12_steps_to_ns\1-d burgers equation\1d_burgers_equation\main.c
+	<stdio.h>
+	<omp.h>
+	<stdlib.h>
+	<math.h>
+
