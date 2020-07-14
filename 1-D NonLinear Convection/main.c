@@ -4,7 +4,7 @@ int main(){
 
   // Define the domain
   double x_len = 2.0;    // Length of the domain
-  int x_points = 101;    // Number of points to consider
+  int x_points = 10001;    // Number of points to consider
   double del_x = x_len/(x_points-1);     // Length of an element
   double x[x_points];
 
@@ -13,13 +13,13 @@ int main(){
     x[i] = i * del_x;       // x co-ordinates
   }
 
-  printf("\n The value of x \n");
-  for (int i = 0; i < x_points; i++){
-      printf("%f \t", x[i]);
-  }
+//  printf("\n The value of x \n");
+//  for (int i = 0; i < x_points; i++){
+//      printf("%f \t", x[i]);
+//  }
 
   // Define the parameters
-  int t_itrs = 500;  // number of time iterations
+  int t_itrs = 5000;  // number of time iterations
   double del_t = 0.001;
   // double c = 1.0;  // speed of wave
 
@@ -37,19 +37,20 @@ int main(){
     }
   }
 
-  printf("\n The initial value of u is \n");
-  for (int i = 0; i < x_points; i++){
-      printf("%f \t", u[i]);
-  }
+//  printf("\n The initial value of u is \n");
+//  for (int i = 0; i < x_points; i++){
+//      printf("%f \t", u[i]);
+//  }
 
   // Loop iterations
   double par_start_time = omp_get_wtime();
   #pragma omp parallel firstprivate(del_x, del_t)
   for (int it = 0; it < t_itrs; it++){
-
-      #pragma omp for nowait
+        double temp;
+      #pragma omp for private(temp)
       for (int i = 1; i < x_points; i++){
-          u_new[i] = u[i] - (u[i]*del_t/del_x)*(u[i] - u[i-1]);
+            temp = u[i-1];
+          u_new[i] = u[i] - (u[i]*del_t/del_x)*(u[i] - temp);
       }
 
       #pragma omp for
@@ -59,10 +60,10 @@ int main(){
   }
   double par_end_time = omp_get_wtime();
 
-  printf("\n The value of u at the end of the iterations \n");
-  for (int i = 0; i < x_points; i++){
-      printf("%f \t", u[i]);
-  }
+//  printf("\n The value of u at the end of the iterations \n");
+//  for (int i = 0; i < x_points; i++){
+//      printf("%f \t", u[i]);
+//  }
 
   printf("\n Time taken for parallel execution is: %f \t", par_end_time-par_start_time);
 
@@ -96,7 +97,14 @@ int main(){
   }
   double ser_end_time = omp_get_wtime();
 
+  // printf("\n The value of u at the end of the iterations \n");
+  // for (int i = 0; i < x_points; i++){
+  //    printf("%f \t", u[i]);
+  // }
+
   printf("\n Time taken for serial execution is: %f \t", ser_end_time-ser_start_time);
+
+  printf("\n Speed up obtained is: %f \t", (ser_end_time-ser_start_time)/(par_end_time-par_start_time));
 
   return 0;
 
