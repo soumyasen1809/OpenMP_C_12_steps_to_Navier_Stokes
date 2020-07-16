@@ -88,8 +88,8 @@ int main()
 
         // Assigning newer values to the older ones
         #pragma omp for
-        for(int i = 1; i < y_points; i++){
-            for(int j = 1; j < x_points; j++){
+        for(int i = 0; i < y_points; i++){
+            for(int j = 0; j < x_points; j++){
                 u[i][j] = u_new[i][j];
                 v[i][j] = v_new[i][j];
             }
@@ -109,6 +109,7 @@ int main()
 
 
 
+    // ------------------------------------------- //
     // Serial execution - for comparison
     for(int i = 0; i < y_points; i++){
         for(int j = 0; j < x_points; j++){
@@ -152,8 +153,8 @@ int main()
         }
 
         // Assigning newer values to the older ones
-        for(int i = 1; i < y_points; i++){
-            for(int j = 1; j < x_points; j++){
+        for(int i = 0; i < y_points; i++){
+            for(int j = 0; j < x_points; j++){
                 u[i][j] = u_new[i][j];
                 v[i][j] = v_new[i][j];
             }
