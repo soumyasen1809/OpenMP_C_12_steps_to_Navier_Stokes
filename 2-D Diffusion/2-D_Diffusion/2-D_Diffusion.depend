@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1594973941 source:c:\users\soumy\downloads\dx-sera\c_openmp_12_steps_to_ns\2-d diffusion\2-d_diffusion\main.c
+	<stdio.h>
+	<omp.h>
+	<stdlib.h>
+
