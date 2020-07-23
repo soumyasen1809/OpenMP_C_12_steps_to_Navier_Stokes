@@ -81,7 +81,7 @@ int main()
                 u_new[0][j] = 0;                                          // u = 0 at y = 0
                 u_new[y_points-1][j] = 1.0;                       // u = 1 at y = 2
                 v_new[0][j] = 0;                                          // v = 0 at y = 0
-                v_new[y_points-1][j] = 1.0;                       // v = 1 at y = 2
+                v_new[y_points-1][j] = 0;                          // v = 0 at y = 2
             }
 
             // Assign new velocity values to old ones
@@ -179,7 +179,7 @@ int main()
                 u_new[0][j] = 0;                                          // u = 0 at y = 0
                 u_new[y_points-1][j] = 1.0;                       // u = 1 at y = 2
                 v_new[0][j] = 0;                                          // v = 0 at y = 0
-                v_new[y_points-1][j] = 1.0;                       // v = 1 at y = 2
+                v_new[y_points-1][j] = 0;                          // v = 0 at y = 2
             }
 
             // Assign new velocity values to old ones
