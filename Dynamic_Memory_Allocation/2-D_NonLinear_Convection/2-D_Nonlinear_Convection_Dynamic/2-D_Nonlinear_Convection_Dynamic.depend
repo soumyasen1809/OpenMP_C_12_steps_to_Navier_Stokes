@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1595666138 source:c:\users\soumy\downloads\dx-sera\c_openmp_12_steps_to_ns\dynamic_memory_allocation\2-d_nonlinear_convection\2-d_nonlinear_convection_dynamic\main.c
+	<stdio.h>
+	<omp.h>
+	<stdlib.h>
+
